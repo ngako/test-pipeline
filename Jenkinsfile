@@ -3,7 +3,9 @@ pipeline {
   stages {
     stage('Ls -al') {
       steps {
-        sh 'ls -al'
+        sshagent(['jenkins-ssh-key']) {
+          ssh administrateur@100.64.80.33 "ls -al"
+        }
       }
     }
   }
